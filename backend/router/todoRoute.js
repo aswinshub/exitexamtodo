@@ -43,7 +43,7 @@ router.post("/add", async (req, res) => {
    
     try {
       const todoId = req.params.id;
-      const data = await dashData.findByIdAndDelete(todoId);
+      const data = await todoData.findByIdAndDelete(todoId);
       console.log(data)
       res.status(200).send('Deleted');
     } catch (error) {
