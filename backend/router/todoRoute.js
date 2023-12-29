@@ -21,6 +21,9 @@ router.get('/',async (req,res)=>{
 
 });
 
+
+//POST------------------------
+
 router.post("/add", async (req, res) => {
     try {
       var item = req.body;
@@ -29,6 +32,22 @@ router.post("/add", async (req, res) => {
       res.status(200).send("Post Successful");
     } catch (error) {
       res.status(404).send("Error !");
+    }
+  });
+
+
+
+  //Deleted Method-----------
+  
+  router.delete("/remove/:id",  async (req,res) => {
+   
+    try {
+      const todoId = req.params.id;
+      const data = await dashData.findByIdAndDelete(todoId);
+      console.log(data)
+      res.status(200).send('Deleted');
+    } catch (error) {
+      res.status(404).send("No data found");
     }
   });
   
